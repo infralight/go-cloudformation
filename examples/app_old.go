@@ -1,7 +1,7 @@
 // This program emits a cloudformation document for `app` to stdout
 package main
 
-import cf "github.com/crewjam/go-cloudformation"
+import cf "github.com/infralight/go-cloudformation"
 
 // makeTemplateTheOldWay is an implementation of makeTemplate that uses the
 // older pre-Stringable syntax. If this file builds, then maybe we haven't broken

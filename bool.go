@@ -10,13 +10,12 @@ import (
 // the Literal gives the value. Typically instances of this function
 // are created by Bool() or one of the function constructors. Ex:
 //
-//   type LocalBalancer struct {
-//     CrossZone *BoolExpr
-//   }
+//	type LocalBalancer struct {
+//	  CrossZone *BoolExpr
+//	}
 //
-//   lb := LocalBalancer{CrossZone: Bool(true)}
-//   lb2 := LocalBalancer{CrossZone: Ref("LoadBalancerCrossZone").Bool()}
-//
+//	lb := LocalBalancer{CrossZone: Bool(true)}
+//	lb2 := LocalBalancer{CrossZone: Ref("LoadBalancerCrossZone").Bool()}
 type BoolExpr struct {
 	Func    BoolFunc
 	Literal bool
@@ -62,8 +61,8 @@ func (x *BoolExpr) UnmarshalJSON(data []byte) error {
 			x.Func = boolFunc
 			return nil
 		}
-	} else if unknownFunctionErr, ok := err2.(UnknownFunctionError); ok {
-		return unknownFunctionErr
+	} else if _, ok := err2.(UnknownFunctionError); ok {
+		return nil
 	}
 
 	// Return the original error trying to unmarshal the literal expression,

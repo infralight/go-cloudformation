@@ -2,7 +2,6 @@ package cloudformation
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // NewTemplate returns a new empty Template initialized with some
@@ -144,12 +143,21 @@ func (r *Resource) UnmarshalJSON(buf []byte) error {
 	r.DeletionPolicy, _ = m["DeletionPolicy"].(string)
 	r.Properties = NewResourceByType(typeName)
 	if r.Properties == nil {
-		return fmt.Errorf("unknown resource type: %s", typeName)
+		return nil
 	}
 
 	propertiesBuf, err := json.Marshal(m["Properties"])
 	if err != nil {
 		return err
 	}
-	return json.Unmarshal(propertiesBuf, r.Properties)
+
+	err = json.Unmarshal(propertiesBuf, r.Properties)
+	if _, ok := err.(UnknownFunctionError); ok {
+		return nil
+	} else if _, ok := err.(*json.UnmarshalTypeError); ok {
+		return nil
+	} else if err != nil {
+		return err
+	}
+	return nil
 }

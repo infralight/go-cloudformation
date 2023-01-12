@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/crewjam/go-cloudformation.svg?branch=master)](https://travis-ci.org/crewjam/go-cloudformation) [![](https://godoc.org/github.com/crewjam/go-cloudformation?status.png)](https://godoc.org/github.com/crewjam/go-cloudformation)
+[![Build Status](https://travis-ci.org/crewjam/go-cloudformation.svg?branch=master)](https://travis-ci.org/crewjam/go-cloudformation) [![](https://godoc.org/github.com/infralight/go-cloudformation?status.png)](https://godoc.org/github.com/infralight/go-cloudformation)
 
 This package provides a schema and related functions that allow you to parse and serialize CloudFormation templates in golang. The package places an emphasis on type-safety so that the templates it produces are (slightly) more likely to be correct, and maybe you can avoid endless cycles of `UPDATE_ROLLBACK_IN_PROGRESS`.
 

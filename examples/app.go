@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	cf "github.com/crewjam/go-cloudformation"
+	cf "github.com/infralight/go-cloudformation"
 )
 
 func makeTemplate() *cf.Template {
